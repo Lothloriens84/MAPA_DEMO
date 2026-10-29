@@ -1,3 +1,4 @@
 pandas==2.2.3
 matplotlib==3.9.2
+contextily==1.6.2
 folium==0.18.0
