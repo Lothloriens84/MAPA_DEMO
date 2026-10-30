@@ -17,9 +17,9 @@ print(locais)
 import folium
 import webbrowser
 
-cores = {"Universidade": "red", "Monumento": "blue", "Jardim": "green"}
+cores = {"Palácio": "red", "Termas": "blue", "Museu": "green", "Religioso": "purple"}
 
-mapa = folium.Map(location=[locais.lat.mean(), locais.lon.mean()], zoom_start=15,
+mapa = folium.Map(location=[locais.lat.mean(), locais.lon.mean()], zoom_start=11,
                   tiles="Esri.WorldStreetMap")
 for _, l in locais.iterrows():
     folium.Marker(
@@ -43,8 +43,8 @@ for _, l in locais.iterrows():
     ax.annotate(l.nome, (l.lon, l.lat), xytext=(5, 5), textcoords="offset points", fontsize=8)
 ax.set_xlabel("Longitude")
 ax.set_ylabel("Latitude")
-ax.set_title("Locais (coordenadas aproximadas)")
+ax.set_title("Bairrada: monumentos e lugares históricos")
 ax.legend()
-ax.set_aspect(1 / 0.766)   # corrige a deformação à latitude de Coimbra (cos 40°)
+ax.set_aspect(1 / 0.762)   # corrige a deformação à latitude da Bairrada (cos 40,4°)
 plt.tight_layout()
 plt.show()
