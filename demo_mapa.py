@@ -19,8 +19,9 @@ import webbrowser
 
 cores = {"Palácio": "red", "Termas": "blue", "Museu": "green", "Religioso": "purple"}
 
-mapa = folium.Map(location=[locais.lat.mean(), locais.lon.mean()], zoom_start=11,
-                  tiles="Esri.WorldStreetMap")
+mapa = folium.Map(location=[locais.lat.mean(), locais.lon.mean()], zoom_start=11, tiles=None)
+folium.TileLayer("Esri.WorldStreetMap", name="Ruas").add_to(mapa)
+folium.TileLayer("Esri.WorldImagery", name="Satélite").add_to(mapa)
 for _, l in locais.iterrows():
     folium.Marker(
         [l.lat, l.lon],
@@ -28,6 +29,7 @@ for _, l in locais.iterrows():
         tooltip=l.nome,
         icon=folium.Icon(color=cores.get(l.tipo, "gray")),
     ).add_to(mapa)
+folium.LayerControl().add_to(mapa)   # botão para trocar ruas / satélite
 
 saida = PASTA / "mapa.html"
 mapa.save(saida)
