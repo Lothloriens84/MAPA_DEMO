@@ -20,7 +20,7 @@ import webbrowser
 cores = {"Universidade": "red", "Monumento": "blue", "Jardim": "green"}
 
 mapa = folium.Map(location=[locais.lat.mean(), locais.lon.mean()], zoom_start=15,
-                  tiles="CartoDB Voyager")
+                  tiles="Esri.WorldStreetMap")
 for _, l in locais.iterrows():
     folium.Marker(
         [l.lat, l.lon],
